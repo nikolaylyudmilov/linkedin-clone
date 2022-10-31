@@ -1,23 +1,25 @@
-import { Avatar } from '@mui/material';
-import React from 'react';
-import InputOption from './InputOption';
+import React, { forwardRef } from 'react';
 import './Post.css';
+import { Avatar } from '@mui/material';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import InputOption from './InputOption';
 
-function Post({ name, description, message, photoUrl}) {
+
+
+const Post = forwardRef(({ name, description, message, photoUrl}, ref) => {
+
   return (
-    <div className='post'>
+    <div ref={ref} className='post'>
         <div className="post__header">
-            <Avatar src={photoUrl}>{name[0]}</Avatar>
-            <div className="post__info">
-                <h2>{name}</h2>
-                <p>{description}</p>
-            </div>
+        <Avatar src={photoUrl}>{name[0]}</Avatar>
+        <div className="post__info">
+            <h2>{name}</h2>
+            <p>{description}</p>
         </div>
-
+        </div>
         <div className="post__body">
             <p>{message}</p>
         </div>
@@ -30,6 +32,6 @@ function Post({ name, description, message, photoUrl}) {
         </div>
     </div>
   )
-}
+})
 
 export default Post
